@@ -6,7 +6,7 @@
 #include<stdlib.h>
 
 void* cari(void *arg){
-	char c[100] = arg;
+	char c[100];
 	char o[1000001];
 	FILE *novel;
 	novel=fopen("/tmp/Novel.txt", "r");
@@ -27,10 +27,9 @@ int main(int argc, char *argv[]){
 	int nilai[argc];
 	pthread_t tid[argc];
 	int i;
-	int z;
 	for(i=1; i<argc; i++){
 		int v = atoi(argv[i]);
-		z=pthread_create(&(tid[i]),NULL,&cari,(void*) v);
+		pthread_create(&(tid[i]),NULL,&cari, (void*) v);
 	}
 	int j;
 	for(j=argc; j>0; j--){
