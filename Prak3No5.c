@@ -6,15 +6,19 @@
 #include<stdlib.h>
 
 void* cari(void *arg){
-	char c = (char) arg;
+	char c[100] = arg;
 	char o[1000001];
 	FILE *novel;
 	novel=fopen("/tmp/Novel.txt", "r");
 	char d;
 	int e=0, i;
 	while((d = fgets(o, 1000001, novel) != EOF)){
-		int test = strcmp(c,o);
-		if(test==0) e++;
+		for(i=0; i<strlen(c); i++){
+			if(c[i] == d){
+				e++;
+			}
+			else ;
+		}
 	}
 	printf("%s : %d\n", c, e);
 }
